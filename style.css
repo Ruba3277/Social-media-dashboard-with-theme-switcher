@@ -1,0 +1,293 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Global font */
+:root {
+    --font-inter: 'Inter', sans-serif;
+    /* Primary colors */
+    --color-data-increase-text: hsl(163, 72%, 41%);
+    --color-data-decrease-text: hsl(356, 69%, 56%);
+
+  /* Social media brand colors */
+    --color-border-facebook: hsl(208, 92%, 53%);
+    --color-border-twitter: hsl(203, 89%, 53%);
+    --color-border-instagram: linear-gradient(to right,
+    hsl(37, 97%, 70%),
+    hsl(5, 77%, 71%),
+    hsl(329, 70%, 58%));
+    --color-border-youtube: hsl(348, 97%, 39%);
+   
+
+  /* Light theme — default */
+  color-scheme: light;
+    --color-bg: hsl(0, 100%, 100%);
+    
+    --color-card-bg: hsl(227, 47%, 96%);
+    --color-text: hsl(230, 17%, 14%);
+    --color-text-muted: hsl(228, 12%, 44%);
+    --toggle-bg: hsl(230, 22%, 74%);
+    --color-desk-view-bg-mix:hsl(225, 100%, 98%);
+    --color-overview-heading-text:hsl(228, 12%, 44%);
+    --toggle-hover-bg: linear-gradient(to right, hsl(210, 79%, 56%), hsl(146, 68%, 55%));
+     --color-hover-bg:#E1E3F0;
+}
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+    --color-bg: hsl(230, 17%, 14%);
+    --color-desk-view-bg-mix: hsl(230, 17%, 14%);
+    
+    --color-card-bg: hsl(228, 28%, 20%);
+    --color-text: hsl(0, 0%, 100%);
+    --color-text-muted: hsl(230, 22%, 74%);
+    --toggle-bg: linear-gradient(
+    hsl(210, 79%, 56%),
+    hsl(146, 68%, 55%));
+    --color-overview-heading-text:white;
+    --toggle-hover-bg: linear-gradient(to right, hsl(210, 79%, 56%), hsl(146, 68%, 55%));
+    --color-hover-bg:#333A56;
+}
+body{
+    font-family: var(--font-inter);
+    padding: 2.5rem 1.5rem;
+    background-color: var(--color-bg);
+
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15rem;
+    background: var(--color-desk-view-bg-mix);
+    border-radius: 0 0 30px 30px;
+    z-index: -1;
+}
+
+.social-media-dashboard{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-block-end: 1.35rem;
+    border-bottom: 1px solid var(--color-text-muted);
+}
+.text h1{
+    font-size: clamp(17px, 3vw, 27px);
+    color: var(--color-text);
+}
+.text p, .mode{
+    font-size: 13.5px;
+    color: var(--color-text-muted);
+    font-weight: 700;
+    
+}
+.toggle{padding-block: 1rem;}
+.theme-switch{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.theme-switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative; /* Add this */
+}
+
+.theme-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 45px;
+    height: 23px;
+    margin-inline-start: auto;
+    border-radius: 50px;
+    background: var(--toggle-bg);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Decorative slider circle */
+.theme-switch__slider {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 4.5px; /* Position over the left side of the toggle */
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--color-bg);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+/* Move the circle when enabled */
+.theme-toggle:checked + .theme-switch__slider {
+    transform: translate(-19px, -50%);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-text-muted);
+    outline-offset: 3px;
+}
+
+/*dashboard*/
+
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.social-card{
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    padding: 1.8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+.social-card-user{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.social-card-user img{
+    width: 20px;
+    height: auto;
+}
+.social-card-user p, .overview-card__label{
+    color: var(--color-text-muted);
+    font-size: 13.5px;
+    font-weight: 700;
+}
+h2{
+    font-size: 55px;
+    font-weight: 700;
+}
+.social-card__label{
+    font-size: 13.5px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+.social-card__change, .overview-card__change {
+    display: flex;
+    
+    align-items: center;
+    gap: 5px;
+}
+.social-card__change-icon{
+    width: 12px;
+    height: auto;
+}
+.social-card__change span, .overview-card__change span{
+    font-size: 12px;
+    color: var(--color-data-increase-text);
+    font-weight: 700;
+}
+.social-card--youtube span, .overview-card__change--decrease span{
+    color: var(--color-data-decrease-text);
+}
+.social-card--instagram {
+    position: relative;
+    border-top: none;
+}
+.social-card--youtube{border-top: 4px solid var(--color-border-youtube);}
+.social-card--facebook{border-top: 4px solid var(--color-border-facebook)}
+.social-card--twitter{border-top: 4px solid var(--color-border-twitter)}
+.social-card--instagram::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--color-border-instagram);
+    border-radius: 8px 8px 0 0;
+}
+h3{
+    margin-block-end: 1.2rem;
+    font-size: clamp(15px, 3vw, 25px);
+    color: var(--color-overview-heading-text);
+}
+.overview__grid{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.overview-card{
+    padding: 1.5rem 1.25rem;
+    background-color: var(--color-card-bg);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.overview-card__header, .overview-card__footer{
+    display: flex;
+    align-items: center;
+}
+.overview-card__icon, .overview-card__change{margin-inline-start: auto;}
+h4{
+    font-size: 30px;
+    color: var(--color-text);
+}
+
+/*active status*/
+
+.theme-toggle:hover{
+    background: var(--toggle-hover-bg);
+}
+
+.social-card:hover, .overview-card:hover{
+    background-color: var(--color-hover-bg);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+@media screen and (min-width:48rem) {
+    body{
+        padding-inline: 10rem;
+    }
+    .text{
+        border-bottom: none;
+        
+    }    
+    .header-section{
+        display: flex;
+        align-items: flex-start;
+    }
+    .toggle{
+        margin-inline-start: auto;
+        padding: 0;
+        
+    }
+    .theme-switch{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .dashboard, .overview__grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+
+    }
+}
