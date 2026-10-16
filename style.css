@@ -92,11 +92,7 @@ body::before {
     
 }
 .toggle{padding-block: 1rem;}
-.theme-switch{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
+
 .theme-switch {
     display: flex;
     align-items: center;
